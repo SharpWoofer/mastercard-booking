@@ -24,11 +24,7 @@ router = APIRouter(
     description="Create a new user account with username and password"
 )
 def register(user: UserCreate, db: Session = Depends(get_db)):
-    """
-    Register a new user:
-    - **user_identifier**: Unique username (3-50 characters)
-    - **password**: Password (minimum 6 characters, will be hashed)
-    """
+
     try:
         db_user = AuthService.create_user(
             db, 
@@ -53,13 +49,7 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
     description="Authenticate and receive a JWT access token"
 )
 def login(user: UserLogin, db: Session = Depends(get_db)):
-    """
-    Login with username and password:
-    - **user_identifier**: Your username
-    - **password**: Your password
     
-    Returns a JWT token to use for authenticated requests.
-    """
     authenticated_user = AuthService.authenticate_user(
         db,
         user_identifier=user.user_identifier,

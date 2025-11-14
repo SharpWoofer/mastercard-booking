@@ -30,10 +30,6 @@ Base = declarative_base()
 
 
 def get_db():
-    """
-    Dependency function to get a database session.
-    Yields a session and ensures it's closed after use.
-    """
     db = SessionLocal()
     try:
         yield db
@@ -42,10 +38,6 @@ def get_db():
 
 
 def create_tables_with_feedback():
-    """
-    Create all tables defined in the models with feedback logging.
-    This function should be called on application startup.
-    """
     try:
         # Import models here to avoid circular imports
         from app.models import models

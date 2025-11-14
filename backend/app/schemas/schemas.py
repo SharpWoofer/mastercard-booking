@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import Optional
 
 class UserCreate(BaseModel):
-    """Schema for creating a new user"""
+    
     user_identifier: str = Field(
         ..., 
         min_length=3, 
@@ -19,28 +19,28 @@ class UserCreate(BaseModel):
     )
 
 class UserLogin(BaseModel):
-    """Schema for user login"""
+    
     user_identifier: str = Field(..., description="Username identifier")
     password: str = Field(..., description="User password")
 
 class UserResponse(BaseModel):
-    """Schema for user response (without password)"""
+    
     id: int
     user_identifier: str
     model_config = ConfigDict(from_attributes=True)
 
 class Token(BaseModel):
-    """Schema for authentication token"""
+    
     access_token: str
     token_type: str = "bearer"
 
 class TokenData(BaseModel):
-    """Schema for token payload data"""
+    
     user_identifier: Optional[str] = None
     user_id: Optional[int] = None
 
 class BookingCreate(BaseModel):
-    """Schema for creating a new booking"""
+    
     room_identifier: str = Field(
         ..., 
         description="Room identifier in MACRO_CASE",
@@ -85,7 +85,7 @@ class BookingCreate(BaseModel):
         return v
 
 class BookingResponse(BaseModel):
-    """Schema for booking response"""
+   
     id: int
     room_identifier: str
     user_id: int

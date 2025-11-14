@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from app.database.db import Base
 
 class User(Base):
-    """User model for authentication"""
+    
     __tablename__ = "users"
     
     id = Column(Integer, primary_key=True, index=True)
@@ -18,7 +18,7 @@ class User(Base):
 
 
 class Booking(Base):
-    """Booking model for meeting room reservations"""
+   
     __tablename__ = "bookings"
     
     id = Column(Integer, primary_key=True, index=True)
